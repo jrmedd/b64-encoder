@@ -45,6 +45,7 @@ const App = () => {
 	}
 
 	const copileCSS = (svgString, mode, accent) => {
+		console.log(mode)
 		const result = optimize(svgString, {
 			floatPrecision: 2,
 			datauri: 'base64',
@@ -90,7 +91,7 @@ const App = () => {
 				copyCSS(message.css)
 			}
 			if (message?.type === 'SVG_STRING_EXPORT_COMPLETE') {
-				copileCSS(message.svgString, mode, accent)
+				copileCSS(message.svgString, message.mode, message.accent)
 			}
 		}
 		window.addEventListener('message', handleMessage)

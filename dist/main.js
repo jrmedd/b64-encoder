@@ -1,5 +1,5 @@
 // Add the event listener
-let runtimeData = {"mode":"development","output":"dist","websockets":false,"debug":false,"command":"dev","instanceId":"Sw4xIQCLDJDRwngvq1PmX","port":5090,"manifest":{"id":"css-encode-svg-replace","name":"css-encode-svg","main":"src/main.js","ui":"src/ui.jsx","editorType":["figma","figjam"],"networkAccess":{"allowedDomains":["none"],"devAllowedDomains":["http://localhost:5090","ws://localhost:9001"]}}};
+let runtimeData = {"mode":"development","output":"dist","websockets":false,"debug":false,"command":"dev","instanceId":"LGm2sDmPw762uDOsZNxj3","port":5797,"manifest":{"id":"css-encode-svg-replace","name":"css-encode-svg","main":"src/main.js","ui":"src/ui.jsx","editorType":["figma","figjam"],"networkAccess":{"allowedDomains":["none"],"devAllowedDomains":["http://localhost:5797","ws://localhost:9001"]}}};
 
 
 async function getCommandHistory() {
@@ -337,7 +337,7 @@ function plugmaMain() {
       const selection = figma.currentPage.selection[0];
       if (selection) {
         const svgString = await selection.exportAsync({ format: "SVG_STRING" });
-        figma.ui.postMessage({ type: "SVG_STRING_EXPORT_COMPLETE", svgString });
+        figma.ui.postMessage({ type: "SVG_STRING_EXPORT_COMPLETE", svgString, mode: message.mode, accent: message.accent });
       } else {
         figma.notify("Select something(s) to copy", { error: true });
         figma.ui.postMessage({ type: "error", message: "No selection found." });
@@ -345,11 +345,10 @@ function plugmaMain() {
     } else if ((message == null ? void 0 : message.type) === "COMPILE_CSS") {
       const css = `
 				${message.mode}-image: url("${message.data}");
-				${message.mode}-position: center;
-				${message.mode}-size: contain;
-				${message.mode}-repeat: no-repeat;
-				${message.mode == "mask" ? `background-color: ${message.accent};` : ""}
-				`;
+${message.mode}-position: center;
+${message.mode}-size: contain;
+${message.mode}-repeat: no-repeat;
+${message.mode == "mask" ? `background-color: ${message.accent};` : ""}`.trim();
       figma.ui.postMessage({ type: "CSS_COMPILATION_COMPLETE", css });
     } else if ((message == null ? void 0 : message.type) === "COPY_COMPLETE") {
       console.log(message.copied);

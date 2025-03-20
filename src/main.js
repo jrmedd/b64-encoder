@@ -24,19 +24,14 @@ figma.showUI(__html__, { width: 400, height: 400, themeColors: true })
 			const selection = figma.currentPage.selection[0];
 			if (selection) {
 				const svgString = await selection.exportAsync({ format: 'SVG_STRING' });
-				figma.ui.postMessage({ type: 'SVG_STRING_EXPORT_COMPLETE', svgString });
+				figma.ui.postMessage({ type: 'SVG_STRING_EXPORT_COMPLETE', svgString, mode: message.mode, accent: message.accent });
 			}  else {
 				figma.notify('Select something(s) to copy', { error: true });
 				figma.ui.postMessage({ type: 'error', message: 'No selection found.' });
 			}
-			} else if (message?.type === 'COMPILE_CSS') {
+			} else if (message?.type === 'COMPILE_CSS') {	
 				const css = `
-				${message.mode}-image: url("${message.data}");
-				${message.mode}-position: center;
-				${message.mode}-size: contain;
-				${message.mode}-repeat: no-repeat;
-				${message.mode == 'mask' ? `background-color: ${message.accent};` : ''}
-				`;
+				${message.mode}-image: url("${message.data}");\n${message.mode}-position: center;\n${message.mode}-size: contain;\n${message.mode}-repeat: no-repeat;\n${message.mode == 'mask' ? `background-color: ${message.accent};` : ''}`.trim();
 				figma.ui.postMessage({ type: 'CSS_COMPILATION_COMPLETE', css });
 			} else if (message?.type === 'COPY_COMPLETE') {
 				console.log(message.copied);
