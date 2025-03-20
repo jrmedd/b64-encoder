@@ -23,20 +23,24 @@ figma.showUI(__html__, { width: 400, height: 400, themeColors: true })
 		if (message?.type === 'EXPORT_SVG') {
 			const selection = figma.currentPage.selection[0];
 			if (selection) {
-				const svgBytes = await selection.exportAsync({ format: 'SVG' });
-				const svgBase64 = `
-					${message.mode}-image: url("data:image/svg+xml;base64,${encodeBase64(svgBytes)}");
-					${message.mode}-position: center;
-					${message.mode}-size: contain;
-					${message.mode}-repeat: no-repeat;
-					${message.mode == 'mask' ? `background-color: ${message.accent};` : ''}
-				`;
-				figma.notify('SVG copied to clipboard', { timeout: 5000 });
-				figma.ui.postMessage({ type: 'SVG_EXPORT_COMPLETE', svgBase64 });
-			} else {
+				const svgString = await selection.exportAsync({ format: 'SVG_STRING' });
+				figma.ui.postMessage({ type: 'SVG_STRING_EXPORT_COMPLETE', svgString });
+			}  else {
 				figma.notify('Select something(s) to copy', { error: true });
 				figma.ui.postMessage({ type: 'error', message: 'No selection found.' });
 			}
+			} else if (message?.type === 'COMPILE_CSS') {
+				const css = `
+				${message.mode}-image: url("${message.data}");
+				${message.mode}-position: center;
+				${message.mode}-size: contain;
+				${message.mode}-repeat: no-repeat;
+				${message.mode == 'mask' ? `background-color: ${message.accent};` : ''}
+				`;
+				figma.ui.postMessage({ type: 'CSS_COMPILATION_COMPLETE', css });
+			} else if (message?.type === 'COPY_COMPLETE') {
+				console.log(message.copied);
+				figma.notify('Copied CSS to clipboard', { timeout: 5000 });
 			}
 		}
 }
