@@ -1,0 +1,116 @@
+:root {
+	font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
+	font-display: optional;
+	font-size: 16px;
+}
+
+html {
+	background-color: var(--figma-color-bg);
+	color: var(--figma-color-text);
+}
+
+body {
+	font-size: 11px;
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+input {
+	border: none;
+	background-color: transparent;
+	font-size: inherit;
+}
+
+button {
+	border: none;
+	background: transparent;
+	appearance: none;
+	font-size: inherit;
+	color: inherit;
+}
+
+i18n-text {
+	display: contents;
+}
+
+:root {
+	--duration-lg: .4s;
+	--duration-md: .2s;
+	--duration-none: 0ms;
+	--duration-sm: .1s;
+	--elevation-100: 0 1px 3px 0 #00000026, 0 0 .5px 0 #0000004d;
+	--elevation-200: 0 1px 3px 0 #0000001a, 0 3px 8px 0 #0000001a, 0 0 .5px 0 #0000002e;
+	--elevation-300: 0 1px 3px 0 #0000001a, 0 5px 12px 0 #00000021, 0 0 .5px 0 #00000026;
+	--elevation-400: 0 2px 5px 0 #00000026, 0 10px 16px 0 #0000001f, 0 0 .5px 0 #0000001f;
+	--elevation-500: 0 2px 5px 0 #00000026, 0 10px 24px 0 #0000002e, 0 0 .5px 0 #00000014;
+	--font-family-default: "Inter", ui-sans-serif, system-ui, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif, "SFProLocalRange";
+	--font-family-display: "Whyte", ui-sans-serif, system-ui, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif;
+	--font-family-mono: "Roboto Mono", "Monaco", "Courier New", monospace;
+	--font-weight-default: 450;
+	--font-weight-strong: 550;
+	--radius-full: 9999px;
+	--radius-large: 0.8125rem;
+	--radius-medium: 0.3125rem;
+	--radius-none: 0;
+	--radius-small: 0.125rem;
+	--spacer-0: 0;
+	--spacer-1: 0.25rem;
+	--spacer-2: 0.5rem;
+	--spacer-3: 1rem;
+	--spacer-4: 1.5rem;
+	--spacer-5: 2rem;
+	--spacer-6: 2.5rem;
+	--text-body-large-font-family: var(--font-family-default);
+	--text-body-large-font-size: .8125rem;
+	--text-body-large-font-weight: var(--font-weight-default);
+	--text-body-large-letter-spacing: -.002rem;
+	--text-body-large-line-height: 1.375rem;
+	--text-body-large-strong-font-family: var(--font-family-default);
+	--text-body-large-strong-font-size: .8125rem;
+	--text-body-large-strong-font-weight: var(--font-weight-strong);
+	--text-body-large-strong-letter-spacing: -.002rem;
+	--text-body-large-strong-line-height: 1.375rem;
+	--text-body-medium-font-family: var(--font-family-default);
+	--text-body-medium-font-size: .6875rem;
+	--text-body-medium-font-weight: var(--font-weight-default);
+	--text-body-medium-letter-spacing: .00344rem;
+	--text-body-medium-line-height: 1rem;
+	--text-body-medium-strong-font-family: var(--font-family-default);
+	--text-body-medium-strong-font-size: .6875rem;
+	--text-body-medium-strong-font-weight: var(--font-weight-strong);
+	--text-body-medium-strong-letter-spacing: .00344rem;
+	--text-body-medium-strong-line-height: 1rem;
+	--text-body-small-font-family: var(--font-family-default);
+	--text-body-small-font-size: .5625rem;
+	--text-body-small-font-weight: var(--font-weight-default);
+	--text-body-small-letter-spacing: .00281rem;
+	--text-body-small-line-height: .875rem;
+	--text-body-small-strong-font-family: var(--font-family-default);
+	--text-body-small-strong-font-size: .5625rem;
+	--text-body-small-strong-font-weight: 500;
+	--text-body-small-strong-letter-spacing: .016875rem;
+	--text-body-small-strong-line-height: .875rem;
+	--text-display-font-family: var(--font-family-display);
+	--text-display-font-size: 3rem;
+	--text-display-font-weight: 400;
+	--text-display-letter-spacing: -.09rem;
+	--text-display-line-height: 3.5rem;
+	--text-heading-large-font-family: var(--font-family-default);
+	--text-heading-large-font-size: 1.5rem;
+	--text-heading-large-font-weight: var(--font-weight-strong);
+	--text-heading-large-letter-spacing: -.0255rem;
+	--text-heading-large-line-height: 2rem;
+	--text-heading-medium-font-family: var(--font-family-default);
+	--text-heading-medium-font-size: .9375rem;
+	--text-heading-medium-font-weight: var(--font-weight-strong);
+	--text-heading-medium-letter-spacing: -.00469rem;
+	--text-heading-medium-line-height: 1.5625rem;
+	--text-heading-small-font-family: var(--font-family-default);
+	--text-heading-small-font-size: .8125rem;
+	--text-heading-small-font-weight: var(--font-weight-strong);
+	--text-heading-small-letter-spacing: -.002rem;
+	--text-heading-small-line-height: 1.375rem;
+}
