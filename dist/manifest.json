@@ -1,6 +1,7 @@
 {
   "api": "1.0.0",
-  "id": "b64-encoder-replace",
+  "id": "1484908794369257881",
+  "documentAccess": "dynamic-page",
   "name": "b64-encoder",
   "main": "main.js",
   "ui": "ui.html",
@@ -13,7 +14,7 @@
       "none"
     ],
     "devAllowedDomains": [
-      "http://localhost:5028",
+      "http://localhost:6032",
       "ws://localhost:9001"
     ]
   }

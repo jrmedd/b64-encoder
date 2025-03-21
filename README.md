@@ -1,6 +1,10 @@
-# b64-encoder
+# Base<sup>64</sup> Encoder
 
-A Figma plugin that streamlines the process of using SVGs in web projects by automating the export, optimisation, and conversion to base64-encoded data URIs for both CSS and HTML.
+A [Figma plugin](https://www.figma.com/community/plugin/1484908794369257881/base64-encoder) that streamlines the process of using SVGs in web projects by automating the export, optimisation, and conversion to base64-encoded data URIs for both CSS and HTML.
+
+| ![Screenshot of plugin in use](./Screenshot1.png) | ![Screenshot of customer counters using CSS embed](./Screenshot2.png)|
+|---------------------------------------------------|----------------------------------------------------------------------|
+|Choose between a HTML or CSS (background/mask)     | Embedding as a CSS mask allows you to create things like custom lists|
 
 ## Overview
 

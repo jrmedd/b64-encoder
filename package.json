@@ -31,7 +31,8 @@
 	},
 	"plugma": {
 		"manifest": {
-			"id": "b64-encoder-replace",
+			"id": "1484908794369257881",
+			"documentAccess": "dynamic-page",
 			"name": "b64-encoder",
 			"main": "src/main.js",
 			"ui": "src/ui.jsx",
