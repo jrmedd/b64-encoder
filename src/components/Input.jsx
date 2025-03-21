@@ -129,11 +129,13 @@ const ColorDisplay = styled.span`
 `;
 
 /**
- * Input component with optional icon
+ * Input component with optional icon and label
  * @param {Object} props - Component props
  * @param {string} [props.value=''] - Input value
  * @param {string} [props.type='text'] - Input type (text, number, etc.)
  * @param {boolean} [props.showIcon=false] - Whether to show the icon
+ * @param {string} [props.label='Input'] - Label text for the input
+ * @param {boolean} [props.$labelAbove=false] - Whether to display the label above the input
  * @param {Function} [props.onChange] - Change event handler
  * @returns {JSX.Element} Input component
  */

@@ -27,6 +27,10 @@ const SectionHeading = styled.h2`
 	margin: 0;
 `
 
+/**
+ * Main application component for Base64 Encoder
+ * @returns {JSX.Element} Application UI
+ */
 const App = () => {
 	const [copiedText, copy] = useCopyToClipboard()
 	const [numSelected, setNumSelected] = useState(0)

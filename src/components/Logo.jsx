@@ -9,6 +9,13 @@ const LogoText = styled.path`
   fill: var(--figma-color-text);
 `
 
+/**
+ * Logo component that renders the application logo as an SVG
+ * @param {Object} props - Component props
+ * @param {number} [props.size=16] - Size of the logo in pixels
+ * @param {string} [props.svg] - Optional SVG string to use instead of the default
+ * @returns {JSX.Element} Logo SVG component
+ */
 const Logo = ({ size = 16, svg }) => 
  (
   <SVG aria-hidden='true' $size={size} viewBox="0 0 512 512">

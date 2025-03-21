@@ -13,7 +13,7 @@
       "none"
     ],
     "devAllowedDomains": [
-      "http://localhost:4430",
+      "http://localhost:5028",
       "ws://localhost:9001"
     ]
   }

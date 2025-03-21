@@ -23,7 +23,7 @@ figma.showUI(__html__, { width: 400, height: 400, themeColors: true })
 				break
 			case 'COMPILE_CSS':
 				data = `${message.backgroundMode}-image: url("${message.data}");\n${message.backgroundMode}-position: center;\n${message.backgroundMode}-size: contain;\n${message.backgroundMode}-repeat: no-repeat;\n${message.backgroundMode == 'mask' ? `background-color: ${message.maskColor};` : ''}`.trim();
-				figma.ui.postMessage({ type: 'COMPILATION_COMPLETE', css, cssOrHtml: message.cssOrHtml });
+				figma.ui.postMessage({ type: 'COMPILATION_COMPLETE', data, cssOrHtml: message.cssOrHtml });
 				break
 			case 'COPY_COMPLETE':
 				figma.notify(`Copied ${message.cssOrHtml.toUpperCase()} to clipboard`, { timeout: 5000 });
