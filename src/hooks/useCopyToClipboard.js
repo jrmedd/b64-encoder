@@ -1,5 +1,9 @@
 import { useCallback, useState } from 'react'
 
+/**
+ * Custom hook for copying text to clipboard
+ * @returns {[string|null, Function]} Array containing the copied text value and the copy function
+ */
 export function useCopyToClipboard() {
   const [copiedText, setCopiedText] = useState(null)
 
@@ -24,6 +28,11 @@ export function useCopyToClipboard() {
   return [copiedText, copy]
 }
 
+/**
+ * Fallback function to copy text to clipboard in non-secure contexts
+ * @param {string} text - The text to copy to clipboard
+ * @returns {void}
+ */
 function unsecuredCopyToClipboard(text) {
   const textArea = document.createElement('textarea');
   textArea.value = text;

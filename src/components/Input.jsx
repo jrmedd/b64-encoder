@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const InputContainer = styled.div`
   position: relative;
-  height: ${props => props.labelAbove ? 'calc(var(--spacer-4) + var(--spacer-3))' : 'var(--spacer-4)'};
+  height: ${props => props.$labelAbove ? 'calc(var(--spacer-4) + var(--spacer-3))' : 'var(--spacer-4)'};
   display: flex;
   align-items: flex-end;
 `;
@@ -58,7 +58,7 @@ const ColorSwatch = styled.div`
   width: 16px;
   height: 16px;
   border-radius: var(--radius-small, 2px);
-  background-color: ${(props) => props.color || '#000000'};
+  background-color: ${(props) => props.$color || '#000000'};
   margin: 0 4px;
   border: 1px solid var(--figma-color-border);
 `;
@@ -129,15 +129,17 @@ const ColorDisplay = styled.span`
 `;
 
 /**
- * Input component with optional icon
+ * Input component with optional icon and label
  * @param {Object} props - Component props
  * @param {string} [props.value=''] - Input value
  * @param {string} [props.type='text'] - Input type (text, number, etc.)
  * @param {boolean} [props.showIcon=false] - Whether to show the icon
+ * @param {string} [props.label='Input'] - Label text for the input
+ * @param {boolean} [props.$labelAbove=false] - Whether to display the label above the input
  * @param {Function} [props.onChange] - Change event handler
  * @returns {JSX.Element} Input component
  */
-const Input = ({ value = '', type = 'text', showIcon = false, label='Input', labelAbove = false, onChange }) => {
+const Input = ({ value = '', type = 'text', showIcon = false, label='Input', $labelAbove = false, onChange }) => {
   const handleInputChange = (event) => {
     if (onChange) {
       onChange(event.target.value);
@@ -145,10 +147,10 @@ const Input = ({ value = '', type = 'text', showIcon = false, label='Input', lab
   };
 
   return (
-    <InputContainer labelAbove={labelAbove}>
+    <InputContainer $labelAbove={$labelAbove}>
       <DisplayContents>
         <InputLabel>
-          { labelAbove && (
+          {$labelAbove && (
             <LabelAbove>
               { label } 
             </LabelAbove>
@@ -159,7 +161,7 @@ const Input = ({ value = '', type = 'text', showIcon = false, label='Input', lab
             </Icon>
           )}
           
-          {type === 'color' && <ColorSwatch color={value} />}
+          {type === 'color' && <ColorSwatch $color={value} />}
           
           <StyledInput
             type={type}

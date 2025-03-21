@@ -6,6 +6,12 @@ const StyledField = styled.div`
 	align-items: center;
 `
 
+/**
+ * Field component for layout with flex display and spacing
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Content to display inside the field
+ * @returns {JSX.Element} Field component
+ */
 const Field = ({ children }) => {
 	return (
 		<StyledField>
