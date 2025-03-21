@@ -1,5 +1,5 @@
 // Add the event listener
-let runtimeData = {"mode":"development","output":"dist","websockets":false,"debug":false,"command":"dev","instanceId":"LGm2sDmPw762uDOsZNxj3","port":5797,"manifest":{"id":"css-encode-svg-replace","name":"css-encode-svg","main":"src/main.js","ui":"src/ui.jsx","editorType":["figma","figjam"],"networkAccess":{"allowedDomains":["none"],"devAllowedDomains":["http://localhost:5797","ws://localhost:9001"]}}};
+let runtimeData = {"mode":"development","output":"dist","debug":false,"websockets":true,"command":"preview","instanceId":"28QoAIpe7IJ49SLw7r30R","port":4430,"manifest":{"id":"b64-encoder-replace","name":"b64-encoder","main":"src/main.js","ui":"src/ui.jsx","editorType":["figma","figjam"],"networkAccess":{"allowedDomains":["none"],"devAllowedDomains":["http://localhost:4430","ws://localhost:9001"]}}};
 
 
 async function getCommandHistory() {
@@ -333,26 +333,33 @@ function plugmaMain() {
     figma == null ? void 0 : figma.ui.postMessage({ type: "SELECTION_COUNT", numSelected });
   });
   figma.ui.onmessage = async (message) => {
-    if ((message == null ? void 0 : message.type) === "EXPORT_SVG") {
-      const selection = figma.currentPage.selection[0];
-      if (selection) {
-        const svgString = await selection.exportAsync({ format: "SVG_STRING" });
-        figma.ui.postMessage({ type: "SVG_STRING_EXPORT_COMPLETE", svgString, mode: message.mode, accent: message.accent });
-      } else {
-        figma.notify("Select something(s) to copy", { error: true });
-        figma.ui.postMessage({ type: "error", message: "No selection found." });
-      }
-    } else if ((message == null ? void 0 : message.type) === "COMPILE_CSS") {
-      const css = `
-				${message.mode}-image: url("${message.data}");
-${message.mode}-position: center;
-${message.mode}-size: contain;
-${message.mode}-repeat: no-repeat;
-${message.mode == "mask" ? `background-color: ${message.accent};` : ""}`.trim();
-      figma.ui.postMessage({ type: "CSS_COMPILATION_COMPLETE", css });
-    } else if ((message == null ? void 0 : message.type) === "COPY_COMPLETE") {
-      console.log(message.copied);
-      figma.notify("Copied CSS to clipboard", { timeout: 5e3 });
+    let data;
+    switch (message == null ? void 0 : message.type) {
+      case "EXPORT_SVG":
+        const selection = figma.currentPage.selection[0];
+        if (selection) {
+          const svgString = await selection.exportAsync({ format: "SVG_STRING" });
+          figma.ui.postMessage({ type: "SVG_STRING_EXPORT_COMPLETE", svgString, cssOrHtml: message.cssOrHtml, backgroundMode: message.backgroundMode, maskColor: message.maskColor });
+        } else {
+          figma.notify("Select something(s) to copy", { error: true });
+          figma.ui.postMessage({ type: "error", message: "No selection found." });
+        }
+        break;
+      case "COMPILE_HTML":
+        data = `<img src="${message.data}" alt="Add a meaningful description..." />`;
+        figma.ui.postMessage({ type: "COMPILATION_COMPLETE", data, cssOrHtml: message.cssOrHtml });
+        break;
+      case "COMPILE_CSS":
+        data = `${message.backgroundMode}-image: url("${message.data}");
+${message.backgroundMode}-position: center;
+${message.backgroundMode}-size: contain;
+${message.backgroundMode}-repeat: no-repeat;
+${message.backgroundMode == "mask" ? `background-color: ${message.maskColor};` : ""}`.trim();
+        figma.ui.postMessage({ type: "COMPILATION_COMPLETE", css, cssOrHtml: message.cssOrHtml });
+        break;
+      case "COPY_COMPLETE":
+        figma.notify(`Copied ${message.cssOrHtml.toUpperCase()} to clipboard`, { timeout: 5e3 });
+        break;
     }
   };
 }

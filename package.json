@@ -31,8 +31,8 @@
 	},
 	"plugma": {
 		"manifest": {
-			"id": "css-encode-svg-replace",
-			"name": "css-encode-svg",
+			"id": "b64-encoder-replace",
+			"name": "b64-encoder",
 			"main": "src/main.js",
 			"ui": "src/ui.jsx",
 			"editorType": [

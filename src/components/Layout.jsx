@@ -23,22 +23,22 @@ const Row = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	justify-content: ${props => props.justify ?? 'center'};
-	align-items: ${props => props.align ?? 'center'};
+	justify-content: ${props => props.$justify ?? 'center'};
+	align-items: ${props => props.$align ?? 'center'};
 	gap: var(--spacer-3);
 	padding: var(--spacer-3);
-	border-top: ${props => props.border ? '1px solid var(--figma-color-border)' : 'none'};
-	flex-grow: ${props => props.grow ? 1 : 0};
+	border-top: ${props => props.$border ? '1px solid var(--figma-color-border)' : 'none'};
+	flex-grow: ${props => props.$grow ? 1 : 0};
 `
 const Column = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: ${props => props.justify ?? 'center'};
-	align-items: ${props => props.align ?? 'center'};
+	justify-content: ${props => props.$justify ?? 'center'};
+	align-items: ${props => props.$align ?? 'center'};
 	gap: var(--spacer-3);
 	padding: var(--spacer-3);
-	border-top: ${props => props.border ? '1px solid var(--figma-color-border)' : 'none'};
-	width: ${props => props.width ?? 'auto'};
+	border-top: ${props => props.$border ? '1px solid var(--figma-color-border)' : 'none'};
+	width: ${props => props.$width ?? 'auto'};
 `
 
 export { Main, Header, Row, Column }

@@ -1,4 +1,4 @@
-# css-encode-svg
+# b64-encoder
 
 ## Quickstart
 
